@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-echo -e "\e[0;32mInstalling global locale fix\e[0m"
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing global locale fix"
 
 if cat /etc/environment | grep -q 'LC_ALL='; then
-    echo -e "\e[1;33mAlready installed. Skipping...\e[0m"
+    echo -e "\e[1;33mAlready installed\e[0m"
     exit 0
 fi
 
@@ -15,9 +18,4 @@ export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-echo ''
-echo -e "\e[1;32mDone!\e[0m"
-echo ''
-
-echo -e "\e[1;33mReload shell for changes to take effect\e[0m"
-echo ''
+ok

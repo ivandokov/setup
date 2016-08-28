@@ -11,16 +11,49 @@ set -e
 DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 cd "${DIR}"
 
-msg() {
-	echo -e "\e[0;32m$1\e[0m"
-}
+#
+# Load library for printing info
+#
+. ./print
 
 #
 # Install some required software
 #
-msg "Install curl and xclip"
+info "Install wget, curl and xclip"
 export LC_ALL=en_US.UTF-8
 sudo apt-get install wget curl xclip -yq > /dev/null
+ok
+
+#
+# Manage directories
+#
+if [ ! -d ~/Code ]; then
+	info "Creating ~/Code directory"
+	mkdir ~/Code
+	ok
+fi
+
+if [ -d ~/Templates ]; then
+	info "Deleting ~/Templates directory"
+	mkdir ~/Templates
+	ok
+fi
+
+if [ -d ~/Examples ]; then
+	info "Deleting ~/Examples directory"
+	mkdir ~/Examples
+	ok
+fi
+
+#
+# Load bash_profile
+#
+if ! cat ~/.bashrc | grep -q '. ~/.bash_profile'; then
+	info "Loading .bash_profile by .bashrc"
+	echo -e '\n. ~/.bash_profile' >> ~/.bashrc
+	ok 1
+	warn "Restart terminal"
+fi
 
 #
 # Create symbolic links for all conf files
@@ -32,38 +65,23 @@ for FILEPATH in $(find conf -type f -not -path "."); do
 	fi
 
 	if [ -f ~/.${NAME} ]; then
-		msg "Skipping ~/.${NAME}. File already exists"
+		warn "Skipping ~/.${NAME}. File already exists"
 	else
-		msg "Creating symlink ~/.${NAME}"
+		info "Creating symlink ~/.${NAME}"
 		ln -s ${DIR}/${FILEPATH} ~/.${NAME}
+		ok
 	fi
 done
 unset FILEPATH
 
 #
-# Manage directories
+# Run all app installs
 #
-if [ ! -d ~/Code ]; then
-	msg "Creating ~/Code directory"
-	mkdir ~/Code
-fi
+for APP in $DIR/app/*; do
+	sudo bash $APP
+done
+unset APP
 
-if [ -d ~/Templates ]; then
-	msg "Deleting ~/Templates directory"
-	mkdir ~/Templates
-fi
-
-#
-# Load bash_profile
-#
-if ! cat ~/.bashrc | grep -q '. ~/.bash_profile'; then
-	msg "Loading .bash_profile by .bashrc"
-	echo -e '\n. ~/.bash_profile' >> ~/.bashrc
-
-	echo ''
-	echo -e "\e[1;33mRestart terminal\e[0m"
-fi
-
-echo ''
-echo -e "\e[1;32mDone!\e[0m"
-echo ''
+echo
+ok
+echo

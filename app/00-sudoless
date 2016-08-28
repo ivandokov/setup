@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-echo -e "\e[0;32mInstalling sudoless access for user ivan\e[0m"
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing sudoless access for user ivan"
 
 echo "ivan ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/ivan > /dev/null
-
 sudo chmod 0440 /etc/sudoers.d/*
 
-echo ''
-echo -e "\e[1;32mDone!\e[0m"
-echo ''
+ok
