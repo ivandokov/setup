@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Virtualbox"
+
+if which vboxmanage > /dev/null; then
+	warn "Already installed!"
+    exit 0
+fi
+
+CODENAME=$(lsb_release --codename | cut -f2)
+
+echo "deb http://download.virtualbox.org/virtualbox/debian ${CODENAME} contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list > /dev/null
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - > /dev/null
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - > /dev/null
+sudo apt-get update -q > /dev/null
+sudo apt-get install virtualbox-5.1 -yfq &> /dev/null
+
+ok
