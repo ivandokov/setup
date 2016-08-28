@@ -20,7 +20,7 @@ msg() {
 #
 msg "Install curl and xclip"
 export LC_ALL=en_US.UTF-8
-sudo apt-get install curl xclip -yq > /dev/null
+sudo apt-get install wget curl xclip -yq > /dev/null
 
 #
 # Create symbolic links for all conf files
