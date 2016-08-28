@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Vagrant"
+
+if which vagrant > /dev/null; then
+	warn "Already installed!"
+    exit 0
+fi
+
+url=$(curl https://www.vagrantup.com/downloads.html 2>&1 | grep 'x86_64.deb' | cut -d'"' -f2)
+
+wget -q $url
+
+sudo dpkg -i vagrant*.deb &>/dev/null
+rm vagrant*.deb
+
+ok
