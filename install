@@ -29,6 +29,16 @@ for FILEPATH in ${CONFIGS}; do
 	fi
 done
 
+if [ ! -d ~/Code ]; then
+	msg "Creating ~/Code directory"
+	mkdir ~/Code
+fi
+
+if [ -d ~/Templates ]; then
+	msg "Deleting ~/Templates directory"
+	mkdir ~/Templates
+fi
+
 if ! cat ~/.bashrc | grep -q '. ~/.bash_profile'; then
 	msg "Loading .bash_profile by .bashrc"
 	echo -e '\n. ~/.bash_profile' >> ~/.bashrc
