@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -e
+
+DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+cd "${DIR}"
+
+msg() {
+	echo -e "\e[0;32m$1\e[0m"
+}
+
+msg "Install curl and xclip"
+export LC_ALL=en_US.UTF-8
+sudo apt-get install curl xclip -yq > /dev/null
+
+CONFIGS=$(find conf -type f -not -path ".")
+
+for FILEPATH in ${CONFIGS}; do
+	NAME=$(basename "${FILEPATH}")
+	if [ -h ~/.${NAME} ]; then
+		rm ~/.${NAME}
+	fi
+
+	if [ -f ~/.${NAME} ]; then
+		msg "Skipping ~/.${NAME}. File already exists"
+	else
+		msg "Creating symlink ~/.${NAME}"
+		ln -s ${DIR}/${FILEPATH} ~/.${NAME}
+	fi
+done
+
+if ! cat ~/.bashrc | grep -q '. ~/.bash_profile'; then
+	msg "Loading .bash_profile by .bashrc"
+	echo -e '\n. ~/.bash_profile' >> ~/.bashrc
+
+	echo ''
+	echo -e "\e[1;33mRestart terminal\e[0m"
+fi
+
+echo ''
+echo -e "\e[1;32mDone!\e[0m"
+echo ''

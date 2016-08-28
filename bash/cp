@@ -1,0 +1,9 @@
+alias copy='xclip -selection clipboard'
+alias paste='xclip -selection clipboard -o'
+alias pbcopy='copy'
+alias pbpaste='paste'
+
+# Copy paste verbose
+cpv () {
+    rsync -WavP --human-readable --progress $1 $2
+}

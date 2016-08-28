@@ -1,0 +1,31 @@
+alias gut='git'
+alias got='git'
+alias gt='git'
+
+clone() {
+	local url=$1;
+	local repo=$2;
+    local dir=$3;
+
+    if [ -z $dir ]; then
+        dir=$repo
+    fi
+
+	if [[ ${url:0:4} == 'http' || ${url:0:3} == 'git' ]]; then
+		repo=$(echo $url | awk -F/ '{print $NF}' | sed -e 's/.git$//')
+	elif [[ -z $repo ]]; then
+		repo=$url
+		dir=$url
+		url="git@github.com:ivandokov/$repo"
+	else
+		url="git@github.com:$url/$repo.git"
+	fi
+
+	git clone $url $dir && cd $dir
+}
+
+git_branch() {
+    GIT_BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    if [ ! -z "${GIT_BRANCH}" ]; then GIT_BRANCH="(${GIT_BRANCH}) "; fi
+    echo "${GIT_BRANCH}"
+}

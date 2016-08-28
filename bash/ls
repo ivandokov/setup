@@ -1,0 +1,3 @@
+alias l='ls -lFh --color=auto'
+alias ll='ls -laFh --color=auto'
+alias la='ll'

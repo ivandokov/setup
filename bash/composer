@@ -1,0 +1,6 @@
+COMPOSERBIN="$HOME/.composer/vendor/bin"
+if [ -d $COMPOSERBIN ]; then
+	export PATH=$COMPOSERBIN:$PATH
+fi
+
+alias cda='composer dump-autoload'

@@ -1,0 +1,1 @@
+alias sz="du --max-depth=1 -k * | sort -nr | cut -f2 | xargs -d '\n' du -sh"

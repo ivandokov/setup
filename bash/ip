@@ -1,0 +1,6 @@
+ip() {
+	local ip=$(curl -s ipecho.net/plain)
+
+	echo $ip | copy
+	echo $ip
+}

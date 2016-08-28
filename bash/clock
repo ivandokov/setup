@@ -1,0 +1,1 @@
+alias clock='while :; do printf "   %s\r" "$(date +%T)"; sleep 1 ; done'

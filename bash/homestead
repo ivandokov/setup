@@ -1,0 +1,11 @@
+function homestead() {
+    if [ "$1" == "init" ]; then
+        git clone https://github.com/laravel/homestead.git ~/Code/homestead
+    elif [ "$1" == "edit" ]; then
+        nano ~/.homestead/Homestead.yaml
+    else
+        ( cd ~/Code/homestead && vagrant $*; cd - > /dev/null )
+    fi
+}
+
+alias a='php artisan'

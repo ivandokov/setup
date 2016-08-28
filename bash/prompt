@@ -1,0 +1,1 @@
+export PS1='\e[5;36m\w \e[5;33m$(git_branch)\e[1;32m➜\e[0m '

@@ -1,0 +1,22 @@
+[user]
+	name = Ivan Dokov
+	email = ivangdokov@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+	ignorecase = false
+[push]
+	default = simple
+[alias]
+	deploy = !git push && git checkout deploy && git rebase master && git push && git checkout master
+	s = !git status
+	c = !git commit -v
+	ca = !git commit -av
+	r = !git rebase
+	b = !git branch -a
+	p = !git push
+	pl = !git pull
+	plp = !git pull && git push
+	co = !git checkout
+	sup = !git submodule foreach git pull origin master && git submodule update
+	chs = !git diff $GIT_BRANCH@{1} $GIT_BRANCH
+	chss = !git diff --stat $GIT_BRANCH@{1} $GIT_BRANCH

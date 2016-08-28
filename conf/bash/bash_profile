@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname $(dirname "$(readlink -f "${BASH_SOURCE[0]}")")))"
+
+# Source all bash files
+for i in ${DIR}/bash/*; do
+    . $i
+done
+unset i
