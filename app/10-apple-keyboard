@@ -6,7 +6,7 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 info "Installing support for Apple Keyboard"
 
 if cat /etc/rc.local | grep -q 'hid_apple'; then
-    echo -e "\e[1;33mAlready installed\e[0m"
+    warn "Already installed!"
     exit 0
 fi
 

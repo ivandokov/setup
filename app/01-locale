@@ -6,7 +6,7 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 info "Installing global locale fix"
 
 if cat /etc/environment | grep -q 'LC_ALL='; then
-    echo -e "\e[1;33mAlready installed\e[0m"
+    warn "Already installed!"
     exit 0
 fi
 
