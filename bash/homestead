@@ -7,5 +7,3 @@ function homestead() {
         ( cd ~/Code/homestead && vagrant $*; cd - > /dev/null )
     fi
 }
-
-alias a='php artisan'
