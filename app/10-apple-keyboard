@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+echo -e "\e[0;32mInstalling support for Apple Keyboard\e[0m"
+
+sudo sed -i '/^exit 0/i \
+echo 2 > /sys/module/hid_apple/parameters/fnmode\
+echo 0 > /sys/module/hid_apple/parameters/iso_layout\
+echo 1 > /sys/module/hid_apple/parameters/swap_opt_cmd\
+' /etc/rc.local
+
+echo -e "\e[1;33mRestart computer for all changes to take effect. Log out doesn't work.\e[0m"
