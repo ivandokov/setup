@@ -2,8 +2,17 @@
 
 echo -e "\e[0;32mInstalling global locale fix\e[0m"
 
+if cat /etc/environment | grep -q 'LC_ALL='; then
+    echo -e "\e[1;33mAlready installed. Skipping...\e[0m"
+    exit 0
+fi
+
 echo "LANGUAGE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 LANG=en_US.UTF-8" | sudo tee -a /etc/environment > /dev/null
+
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 echo -e "\e[1;33mReload shell for changes to take effect\e[0m"
