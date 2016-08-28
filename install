@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
+#
+# Exit at any error
+#
 set -e
 
+#
+# Find base dir and go there
+#
 DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 cd "${DIR}"
 
@@ -9,13 +15,17 @@ msg() {
 	echo -e "\e[0;32m$1\e[0m"
 }
 
+#
+# Install some required software
+#
 msg "Install curl and xclip"
 export LC_ALL=en_US.UTF-8
 sudo apt-get install curl xclip -yq > /dev/null
 
-CONFIGS=$(find conf -type f -not -path ".")
-
-for FILEPATH in ${CONFIGS}; do
+#
+# Create symbolic links for all conf files
+#
+for FILEPATH in $(find conf -type f -not -path "."); do
 	NAME=$(basename "${FILEPATH}")
 	if [ -h ~/.${NAME} ]; then
 		rm ~/.${NAME}
@@ -28,7 +38,11 @@ for FILEPATH in ${CONFIGS}; do
 		ln -s ${DIR}/${FILEPATH} ~/.${NAME}
 	fi
 done
+unset FILEPATH
 
+#
+# Manage directories
+#
 if [ ! -d ~/Code ]; then
 	msg "Creating ~/Code directory"
 	mkdir ~/Code
@@ -39,6 +53,9 @@ if [ -d ~/Templates ]; then
 	mkdir ~/Templates
 fi
 
+#
+# Load bash_profile
+#
 if ! cat ~/.bashrc | grep -q '. ~/.bash_profile'; then
 	msg "Loading .bash_profile by .bashrc"
 	echo -e '\n. ~/.bash_profile' >> ~/.bashrc
