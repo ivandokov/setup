@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Google Chrome"
+
+if which google-chrome > /dev/null; then
+	echo -e "\e[1;33mAlready installed\e[0m"
+    exit 0
+fi
+
+url='https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+
+wget -q $url
+
+sudo dpkg -i google-chrome*.deb &>/dev/null
+sudo apt-get install -fy &>/dev/null
+rm google-chrome*.deb
+
+ok
