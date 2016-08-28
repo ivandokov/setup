@@ -2,6 +2,11 @@
 
 echo -e "\e[0;32mInstalling support for Apple Keyboard\e[0m"
 
+if cat /etc/rc.local | grep -q 'hid_apple'; then
+    echo -e "\e[1;33mAlready installed. Skipping...\e[0m"
+    exit 0
+fi
+
 sudo sed -i '/^exit 0/i \
 echo 2 > /sys/module/hid_apple/parameters/fnmode\
 echo 0 > /sys/module/hid_apple/parameters/iso_layout\
