@@ -5,3 +5,7 @@ echo -e "\e[0;32mInstalling sudoless access for user ivan\e[0m"
 echo "ivan ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/ivan > /dev/null
 
 sudo chmod 0440 /etc/sudoers.d/*
+
+echo ''
+echo -e "\e[1;32mDone!\e[0m"
+echo ''

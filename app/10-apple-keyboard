@@ -13,4 +13,9 @@ echo 0 > /sys/module/hid_apple/parameters/iso_layout\
 echo 1 > /sys/module/hid_apple/parameters/swap_opt_cmd\
 ' /etc/rc.local
 
+echo ''
+echo -e "\e[1;32mDone!\e[0m"
+echo ''
+
 echo -e "\e[1;33mRestart computer for all changes to take effect. Log out doesn't work.\e[0m"
+echo ''
