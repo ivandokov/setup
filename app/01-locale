@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo -e "\e[0;32mInstalling global locale fix\e[0m"
+
+echo "LANGUAGE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+LANG=en_US.UTF-8" | sudo tee -a /etc/environment > /dev/null
+
+echo -e "\e[1;33mReload shell for changes to take effect\e[0m"
