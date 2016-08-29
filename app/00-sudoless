@@ -3,9 +3,11 @@
 DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 . "$DIR/print"
 
-info "Installing sudoless access for user ivan"
+USR=$(logname)
 
-echo "ivan ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/ivan > /dev/null
+info "Installing sudoless access for user $USR"
+
+echo "$USR ALL=(ALL) NOPASSWD:ALL" | sudo tee -a "/etc/sudoers.d/$USR" > /dev/null
 sudo chmod 0440 /etc/sudoers.d/*
 
 ok
