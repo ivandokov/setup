@@ -3,7 +3,7 @@
 DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 . "$DIR/print"
 
-info "Installing support for Apple Keyboard"
+info "Installing Apple Keyboard keys changes"
 
 if cat /etc/rc.local | grep -q 'hid_apple'; then
     warn "Already installed!"
