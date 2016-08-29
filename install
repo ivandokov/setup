@@ -19,7 +19,7 @@ cd "${DIR}"
 #
 # Install some required software
 #
-info "Install wget, curl, xclip and git"
+info "Install wget, curl, xclip and git" 1
 export LC_ALL=en_US.UTF-8
 sudo apt-get install wget curl xclip git -yq > /dev/null
 ok
@@ -28,19 +28,19 @@ ok
 # Manage directories
 #
 if [ ! -d ~/Code ]; then
-    info "Creating ~/Code directory"
+    info "Creating ~/Code directory" 1
     mkdir ~/Code
     ok
 fi
 
 if [ -d ~/Templates ]; then
-    info "Deleting ~/Templates directory"
+    info "Deleting ~/Templates directory" 1
     mkdir ~/Templates
     ok
 fi
 
 if [ -d ~/Examples ]; then
-    info "Deleting ~/Examples directory"
+    info "Deleting ~/Examples directory" 1
     mkdir ~/Examples
     ok
 fi
@@ -49,10 +49,10 @@ fi
 # Load bash_profile
 #
 if ! cat ~/.bashrc | grep -q '. ~/.bash_profile'; then
-    info "Loading .bash_profile by .bashrc"
+    info "Loading .bash_profile by .bashrc" 1
     echo -e '\n. ~/.bash_profile' >> ~/.bashrc
-    ok 1
-    warn "Restart terminal"
+    warn "Restart terminal" 1
+    ok
 fi
 
 #
@@ -67,7 +67,7 @@ for FILEPATH in $(find conf -type f -not -path "."); do
     if [ -f ~/.${NAME} ]; then
         warn "Skipping ~/.${NAME}. File already exists"
     else
-        info "Creating symlink to ~/.${NAME}"
+        info "Creating symlink to ~/.${NAME}" 1
         ln -s ${DIR}/${FILEPATH} ~/.${NAME}
         ok
     fi
@@ -80,7 +80,6 @@ unset FILEPATH
 for APP in $DIR/app/*; do
     sudo bash $APP
 done
-unset APP
 
 echo
 ok

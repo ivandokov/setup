@@ -3,7 +3,7 @@
 DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 . "$DIR/print"
 
-info "Installing Apple Keyboard keys changes"
+info "Installing Apple Keyboard keys changes" 1
 
 if cat /etc/rc.local | grep -q 'hid_apple'; then
     warn "Already installed!"
@@ -16,5 +16,5 @@ echo 0 > /sys/module/hid_apple/parameters/iso_layout\
 echo 1 > /sys/module/hid_apple/parameters/swap_opt_cmd\
 ' /etc/rc.local
 
-ok 1
-warn "Restart computer for all changes to take effect. Log out doesn't work!"
+warn "Restart computer for all changes to take effect. Log out doesn't work!" 1
+ok

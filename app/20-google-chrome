@@ -6,16 +6,14 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 info "Installing Google Chrome"
 
 if which google-chrome > /dev/null; then
-	warn "Already installed!"
+    warn "Already installed!"
     exit 0
 fi
 
-url='https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-wget -q $url
-
-sudo dpkg -i google-chrome*.deb &>/dev/null
-sudo apt-get install -fy &>/dev/null
+sudo dpkg -i google-chrome*.deb
+sudo apt-get install -fy
 rm google-chrome*.deb
 
 ok

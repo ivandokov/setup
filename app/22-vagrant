@@ -12,9 +12,9 @@ fi
 
 url=$(curl https://www.vagrantup.com/downloads.html 2>&1 | grep 'x86_64.deb' | cut -d'"' -f2)
 
-wget -q $url
+wget $url
 
-sudo dpkg -i vagrant*.deb &>/dev/null
+sudo dpkg -i vagrant*.deb
 rm vagrant*.deb
 
 ok

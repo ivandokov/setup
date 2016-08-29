@@ -3,7 +3,7 @@
 DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 . "$DIR/print"
 
-info "Installing global locale fix"
+info "Installing global locale fix" 1
 
 if cat /etc/environment | grep -q 'LC_ALL='; then
     warn "Already installed!"

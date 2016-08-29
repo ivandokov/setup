@@ -5,7 +5,7 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 
 USR=$(logname)
 
-info "Installing sudoless access for user $USR"
+info "Installing sudoless access for user $USR" 1
 
 echo "$USR ALL=(ALL) NOPASSWD:ALL" | sudo tee -a "/etc/sudoers.d/$USR" > /dev/null
 sudo chmod 0440 /etc/sudoers.d/*
