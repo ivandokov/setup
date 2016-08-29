@@ -7,3 +7,7 @@ function homestead() {
         ( cd ~/Code/homestead && vagrant $*; cd - > /dev/null )
     fi
 }
+
+function hs() {
+	homestead $*
+}
