@@ -10,6 +10,6 @@ if which git; then
     exit 0
 fi
 
-sudo apt-get install git -yq
+sudo apt-get install git -yq > /dev/null
 
 ok
