@@ -11,6 +11,7 @@ if which subl; then
 fi
 
 sudo apt-add-repository ppa:webupd8team/sublime-text-3 -y
+sudo apt-get update
 sudo apt-get install sublime-text -y
 
 ok

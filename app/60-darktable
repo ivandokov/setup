@@ -11,6 +11,7 @@ if which darktable; then
 fi
 
 sudo apt-add-repository ppa:pmjdebruijn/darktable-release -y
+sudo apt-get update
 sudo apt-get install darktable -y
 
 ok
