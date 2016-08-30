@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Dnsmasq"
+
+if which dnsmasq; then
+	warn "Already installed!"
+    exit 0
+fi
+
+sudo apt-get install dnsmasq
+echo 'address=/.app/192.168.10.10' | sudo tee /etc/dnsmasq.d/app.conf
+sudo service networking restart
+
+ok
