@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Sublime Text 3"
+
+if which gimp; then
+	warn "Already installed!"
+    exit 0
+fi
+
+sudo apt-add-repository ppa:otto-kesselgulasch/gimp -y
+sudo apt-get update
+sudo apt-get install gimp -y
+
+if [ -d ~/.gimp-2.8 ]; then
+	mv ~/.gimp-2.8 ~/.gimp-2.8.old
+	cp -R "$DIR/etc/gimp" ~/.gimp-2.8
+elif [ -d ~/.config/GIMP/2.9 ]; then
+	mv ~/.config/GIMP/2.9 ~/.config/GIMP/2.9.old
+	cp -R "$DIR/etc/gimp" ~/.config/GIMP/2.9
+fi
+
+ok
