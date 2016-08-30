@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Sublime Text 3"
+
+if which subl; then
+	warn "Already installed!"
+    exit 0
+fi
+
+sudo apt-add-repository ppa:webupd8team/sublime-text-3 -y
+sudo apt-get install sublime-text
+
+ok
