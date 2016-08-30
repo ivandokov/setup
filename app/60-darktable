@@ -10,7 +10,7 @@ if which subl; then
     exit 0
 fi
 
-sudo apt-add-repository ppa:webupd8team/sublime-text-3 -y
-sudo apt-get install sublime-text
+sudo apt-add-repository ppa:pmjdebruijn/darktable-release -y
+sudo apt-get install darktable -y
 
 ok
