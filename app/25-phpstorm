@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing PhpStorm"
+
+if which pstorm; then
+	warn "Already installed!"
+    exit 0
+fi
+
+wget https://download.jetbrains.com/webide/PhpStorm-2016.2.1.tar.gz
+tar -zxf PhpStorm-2016.2.1.tar.gz
+rm PhpStorm-2016.2.1.tar.gz
+mv PhpStorm-* /opt/phpstorm-2016
+
+ok
