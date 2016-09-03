@@ -5,7 +5,7 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 
 info "Installing PhpStorm"
 
-if which pstorm; then
+if which pstorm > /dev/null; then
 	warn "Already installed!"
     exit 0
 fi
