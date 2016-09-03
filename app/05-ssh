@@ -5,7 +5,7 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 
 info "Installing ssh" 1
 
-if which ssh; then
+if which ssh > /dev/null; then
     warn "Already installed!"
     exit 0
 fi
