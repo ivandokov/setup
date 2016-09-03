@@ -1,4 +1,4 @@
-colors () {
+function colors () {
     clear
 
     for x in 0 1 4 5 7 8; do 
