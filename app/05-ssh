@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing ssh" 1
+
+if which ssh; then
+    warn "Already installed!"
+    exit 0
+fi
+
+sudo apt-get install ssh -y
+
+ok
