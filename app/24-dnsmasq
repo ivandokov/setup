@@ -10,7 +10,7 @@ if which dnsmasq; then
     exit 0
 fi
 
-sudo apt-get install dnsmasq
+sudo apt-get install dnsmasq -y
 echo 'address=/.app/192.168.10.10' | sudo tee /etc/dnsmasq.d/app.conf
 sudo service networking restart
 
