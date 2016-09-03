@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing htop"
+
+if which htop > /dev/null; then
+	warn "Already installed!"
+    exit 0
+fi
+
+sudo apt-get install htop -y
+
+ok
