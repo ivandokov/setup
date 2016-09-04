@@ -45,6 +45,10 @@ if [ -d ~/Examples ]; then
     ok
 fi
 
+info "Changing owner of /opt directory" 1
+chown $(logname) /opt
+ok
+
 #
 # Load bash_profile
 #
