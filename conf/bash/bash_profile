@@ -2,6 +2,8 @@
 
 DIR="$(dirname $(dirname $(dirname "$(readlink -f "${BASH_SOURCE[0]}")")))"
 
+export PATH="${DIR}/bin:$PATH"
+
 # Source all bash files
 for i in ${DIR}/bash/*; do
     . $i
