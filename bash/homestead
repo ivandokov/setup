@@ -3,6 +3,8 @@ function homestead() {
         git clone https://github.com/laravel/homestead.git ~/Code/homestead
     elif [ "$1" == "edit" ]; then
         nano ~/.homestead/Homestead.yaml
+    elif [ "$1" == "rebuild" ]; then
+        ( cd ~/Code/homestead && vagrant destroy -f && vagrant up && vagrant ssh; cd - > /dev/null )
     else
         ( cd ~/Code/homestead && vagrant $*; cd - > /dev/null )
     fi
