@@ -5,7 +5,7 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 
 info "Installing wget" 1
 
-if which wget; then
+if which wget > /dev/null; then
     warn "Already installed!"
     exit 0
 fi
