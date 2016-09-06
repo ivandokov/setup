@@ -10,7 +10,7 @@ if which phockup > /dev/null; then
     exit 0
 fi
 
-sudo apt-get install libimage-exiftool-perl -y
+brew install exiftool
 git clone https://github.com/ivandokov/phockup.git /opt/phockup
 sudo ln -s /opt/phockup/phockup.py /usr/local/bin/phockup
 
