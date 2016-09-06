@@ -1,2 +1,2 @@
 alias E='nano ~/.bash_profile'
-alias R='source ~/.bash_profile && echo -e "\e[0;32;40m~/.bash_profile reloaded\e[0m"'
+alias R='source ~/.bash_profile && echo -e "\033[0;32m~/.bash_profile reloaded\033[0m"'
