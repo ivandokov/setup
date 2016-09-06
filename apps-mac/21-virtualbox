@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Virtualbox"
+
+if which vboxmanage > /dev/null; then
+	warn "Already installed!"
+    exit 0
+fi
+
+# TODO
+
+ok

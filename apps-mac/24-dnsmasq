@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Dnsmasq"
+
+if brew ls --versions dnsmasq > /dev/null; then
+	warn "Already installed!"
+    exit 0
+fi
+
+brew install dnsmasq
+sudo brew services start dnsmasq
+cp /usr/local/opt/dnsmasq/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf
+echo 'conf-dir=/etc/dnsmasq.d/,*.conf' > /usr/local/etc/dnsmasq.conf
+sudo mkdir /etc/dnsmasq.d
+echo 'address=/.app/192.168.10.10' | sudo tee /etc/dnsmasq.d/app.conf
+sudo brew services restart dnsmasq
+
+ok

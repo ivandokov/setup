@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+#
+# Exit at any error
+#
+set -e
+
+#
+# Find base dir and go there
+#
+DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+cd "${DIR}"
+
+#
+# Load library for printing info
+#
+. ./print
+
+#
+# Install some required software
+#
+info "Install wget, curl, xclip and git" 1
+export LC_ALL=en_US.UTF-8
+sudo apt-get install wget curl xclip git -yq > /dev/null
+ok
+
+#
+# Manage directories
+#
+if [ ! -d ~/Code ]; then
+    info "Creating ~/Code directory" 1
+    mkdir ~/Code
+    ok
+fi
+
+#
+# Create symbolic links for all conf files
+#
+for FILEPATH in $(find conf -type f -not -path "."); do
+    NAME=$(basename "${FILEPATH}")
+    if [ -h ~/.${NAME} ]; then
+        rm ~/.${NAME}
+    fi
+
+    if [ -f ~/.${NAME} ]; then
+        warn "Skipping ~/.${NAME}. File already exists"
+    else
+        info "Creating symlink to ~/.${NAME}" 1
+        ln -s ${DIR}/${FILEPATH} ~/.${NAME}
+        ok
+    fi
+done
+unset FILEPATH
+
+#
+# Run all app installs
+#
+info "Do you want to run app installers [y/n]: " 1
+read APPINSTALL
+if [ $APPINSTALL = 'y' ] || [ $APPINSTALL = 'Y' ]; then
+    for APP in $DIR/apps-mac/*; do
+        sudo bash $APP
+    done
+fi
+
+echo
+ok
+echo

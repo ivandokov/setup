@@ -12,79 +12,10 @@ DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 cd "${DIR}"
 
 #
-# Load library for printing info
+# Run installer for current OS
 #
-. ./print
-
-#
-# Install some required software
-#
-info "Install wget, curl, xclip and git" 1
-export LC_ALL=en_US.UTF-8
-sudo apt-get install wget curl xclip git -yq > /dev/null
-ok
-
-#
-# Manage directories
-#
-if [ ! -d ~/Code ]; then
-    info "Creating ~/Code directory" 1
-    mkdir ~/Code
-    ok
+if [ "$(uname)" == "Darwin" ]; then
+    bash "${DIR}/install-mac"
+else
+    bash "${DIR}/install-ubuntu"
 fi
-
-if [ -d ~/Templates ]; then
-    info "Deleting ~/Templates directory" 1
-    mkdir ~/Templates
-    ok
-fi
-
-if [ -d ~/Examples ]; then
-    info "Deleting ~/Examples directory" 1
-    mkdir ~/Examples
-    ok
-fi
-
-#
-# Load bash_profile
-#
-if ! cat ~/.bashrc | grep -q '. ~/.bash_profile'; then
-    info "Loading .bash_profile by .bashrc" 1
-    echo -e '\n. ~/.bash_profile' >> ~/.bashrc
-    warn "Restart terminal" 1
-    ok
-fi
-
-#
-# Create symbolic links for all conf files
-#
-for FILEPATH in $(find conf -type f -not -path "."); do
-    NAME=$(basename "${FILEPATH}")
-    if [ -h ~/.${NAME} ]; then
-        rm ~/.${NAME}
-    fi
-
-    if [ -f ~/.${NAME} ]; then
-        warn "Skipping ~/.${NAME}. File already exists"
-    else
-        info "Creating symlink to ~/.${NAME}" 1
-        ln -s ${DIR}/${FILEPATH} ~/.${NAME}
-        ok
-    fi
-done
-unset FILEPATH
-
-#
-# Run all app installs
-#
-info "Do you want to run app installers [y/n]: " 1
-read APPINSTALL
-if [ $APPINSTALL = 'y' ] || [ $APPINSTALL = 'Y' ]; then
-    for APP in $DIR/app/*; do
-        sudo bash $APP
-    done
-fi
-
-echo
-ok
-echo

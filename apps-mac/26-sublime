@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Sublime Text 3"
+
+if which subl > /dev/null; then
+	warn "Already installed!"
+    exit 0
+fi
+
+# TODO
+
+ok
