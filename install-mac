@@ -8,21 +8,14 @@ set -e
 #
 # Find base dir and go there
 #
-DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+DIR="$(dirname "${BASH_SOURCE[0]}")"
+DIR=$(python -c 'import os.path; print(os.path.realpath("$DIR"))')
 cd "${DIR}"
 
 #
 # Load library for printing info
 #
 . ./print
-
-#
-# Install some required software
-#
-info "Install wget, curl, xclip and git" 1
-export LC_ALL=en_US.UTF-8
-sudo apt-get install wget curl xclip git -yq > /dev/null
-ok
 
 #
 # Manage directories
