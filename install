@@ -45,10 +45,6 @@ if [ -d ~/Examples ]; then
     ok
 fi
 
-info "Changing owner of /opt directory" 1
-chown $(logname) /opt
-ok
-
 #
 # Load bash_profile
 #
@@ -81,9 +77,13 @@ unset FILEPATH
 #
 # Run all app installs
 #
-for APP in $DIR/app/*; do
-    sudo bash $APP
-done
+info "Do you want to run app installers [y/n]: " 1
+read APPINSTALL
+if [ $APPINSTALL = 'y' ] || [ $APPINSTALL = 'Y' ]; then
+    for APP in $DIR/app/*; do
+        sudo bash $APP
+    done
+fi
 
 echo
 ok
