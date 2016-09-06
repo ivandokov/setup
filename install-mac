@@ -9,7 +9,6 @@ set -e
 # Find base dir and go there
 #
 DIR="$(dirname "${BASH_SOURCE[0]}")"
-DIR=$(python -c 'import os.path; print(os.path.realpath("$DIR"))')
 cd "${DIR}"
 
 #
