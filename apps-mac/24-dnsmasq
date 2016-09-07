@@ -16,6 +16,7 @@ cp /usr/local/opt/dnsmasq/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf
 echo 'conf-dir=/etc/dnsmasq.d/,*.conf' > /usr/local/etc/dnsmasq.conf
 sudo mkdir /etc/dnsmasq.d
 echo 'address=/.app/192.168.10.10' | sudo tee /etc/dnsmasq.d/app.conf
+echo 'address=/.loc/192.168.10.10' | sudo tee /etc/dnsmasq.d/loc.conf
 sudo brew services restart dnsmasq
 
 ok
