@@ -1,0 +1,1 @@
+alias serve-test='ngrok http -host-header=test.loc 192.168.10.10:80'
