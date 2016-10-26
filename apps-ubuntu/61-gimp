@@ -6,7 +6,7 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 info "Installing Gimp"
 
 if which gimp > /dev/null; then
-	warn "Already installed!"
+    warn "Already installed!"
     exit 0
 fi
 
