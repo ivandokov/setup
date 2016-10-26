@@ -19,9 +19,9 @@ cd "${DIR}"
 #
 # Install some required software
 #
-info "Install wget, curl, xclip and git" 1
+info "Install wget, curl, xclip and git software-properties-common" 1
 export LC_ALL=en_US.UTF-8
-sudo apt-get install wget curl xclip git -yq > /dev/null
+sudo apt-get install wget curl xclip git software-properties-common -yq > /dev/null
 ok
 
 #
