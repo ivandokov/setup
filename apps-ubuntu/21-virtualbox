@@ -6,11 +6,15 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 info "Installing Virtualbox"
 
 if which vboxmanage > /dev/null; then
-	warn "Already installed!"
+    warn "Already installed!"
     exit 0
 fi
 
 CODENAME=$(lsb_release --codename | cut -f2)
+
+if [ $CODENAME = 'loki' ];
+    CODENAME='xenial'
+fi
 
 echo "deb http://download.virtualbox.org/virtualbox/debian ${CODENAME} contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
