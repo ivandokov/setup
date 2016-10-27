@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Node.JS"
+
+if which nodejs > /dev/null; then
+    warn "Already installed!"
+    exit 0
+fi
+
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+ok
