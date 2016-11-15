@@ -2,10 +2,12 @@
 
 DIR="$(dirname $(dirname $(dirname "$(readlink "${BASH_SOURCE[0]}")")))"
 
-export PATH="${DIR}/bin:$PATH"
+export PATH="${DIR}/bin:/usr/local/sbin:$PATH"
 
 # Source all bash files
 for i in ${DIR}/bash/*; do
     . $i
 done
 unset i
+
+. ~/.bash_aliases
