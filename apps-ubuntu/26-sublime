@@ -6,7 +6,7 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 info "Installing Sublime Text 3"
 
 if which subl > /dev/null; then
-	warn "Already installed!"
+    warn "Already installed!"
     exit 0
 fi
 

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Terminator"
+
+if which terminator > /dev/null; then
+    warn "Already installed!"
+    exit 0
+fi
+
+sudo add-apt-repository ppa:gnome-terminator/nightly -y
+sudo apt-get update
+sudo apt-get install terminator -y
+
+ok

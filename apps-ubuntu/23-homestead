@@ -6,14 +6,18 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 info "Installing Homestead"
 
 if [ -d ~/.homestead ]; then
-	warn "Already installed!"
+    warn "Already installed!"
     exit 0
 fi
 
 vagrant box add laravel/homestead
 
+USR=$(logname)
+
 git clone -q https://github.com/laravel/homestead.git ~/Code/homestead
 cd ~/Code/homestead
 bash init.sh
+sudo chown -R $USR:$USR ~/Code/homestead
+sudo chown -R $USR:$USR ~/.homestead
 
 ok

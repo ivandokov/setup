@@ -6,12 +6,12 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 info "Installing Dnsmasq"
 
 if which dnsmasq > /dev/null; then
-	warn "Already installed!"
+    warn "Already installed!"
     exit 0
 fi
 
-sudo apt-get install dnsmasq -y
-echo 'address=/.app/192.168.10.10' | sudo tee /etc/dnsmasq.d/app.conf
-sudo service networking restart
+echo 'address=/.app/192.168.10.10
+address=/.loc/192.168.10.10' | sudo tee /etc/NetworkManager/dnsmasq.d/loc.conf
+sudo service network-manager restart
 
 ok
