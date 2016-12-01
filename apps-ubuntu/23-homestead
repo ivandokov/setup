@@ -12,12 +12,10 @@ fi
 
 vagrant box add laravel/homestead
 
-USR=$(logname)
-
 git clone -q https://github.com/laravel/homestead.git ~/Code/homestead
 cd ~/Code/homestead
 bash init.sh
-sudo chown -R $USR:$USR ~/Code/homestead
-sudo chown -R $USR:$USR ~/.homestead
+sudo chown -R $SUDO_USER:$SUDO_USER ~/Code/homestead
+sudo chown -R $SUDO_USER:$SUDO_USER ~/.homestead
 
 ok
