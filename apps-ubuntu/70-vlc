@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing VLC"
+
+if which v > /dev/null; then
+    warn "Already installed!"
+    exit 0
+fi
+
+sudo apt-add-repository ppa:videolan/stable-daily -y
+sudo apt-get update
+sudo apt-get install vlc -y
+
+ok
