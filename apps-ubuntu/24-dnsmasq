@@ -3,15 +3,10 @@
 DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 . "$DIR/print"
 
-info "Installing Dnsmasq"
+info "Setting up dnsmasq"
 
-if which dnsmasq > /dev/null; then
-    warn "Already installed!"
-    exit 0
-fi
-
-echo 'address=/.app/192.168.10.10
-address=/.loc/192.168.10.10' | sudo tee /etc/NetworkManager/dnsmasq.d/loc.conf
-sudo service network-manager restart
+echo 'address=/.loc/192.168.10.10
+address=/.app/192.168.10.10' | sudo tee /etc/NetworkManager/dnsmasq.d/hosts.conf
+warn "Restart computer for hosts configurations to take effect!" 1
 
 ok
