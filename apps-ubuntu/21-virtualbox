@@ -12,7 +12,7 @@ fi
 
 CODENAME=$(lsb_release --codename | cut -f2)
 
-if [ $CODENAME = 'loki' ];
+if [ $CODENAME = 'loki' ]; then
     CODENAME='xenial'
 fi
 

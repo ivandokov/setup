@@ -18,7 +18,9 @@ if [ -d ~/.config/GIMP/2.9 ]; then
         mv ~/.config/GIMP/2.9 ~/.config/GIMP/2.9.old
         cp -R "$DIR/etc/gimp" ~/.config/GIMP/2.9
 else
-	mv ~/.gimp-2.8 ~/.gimp-2.8.old
+	if [ -f ~/.gimp-2.8 ]; then
+		mv ~/.gimp-2.8 ~/.gimp-2.8.old
+	fi
 	cp -R "$DIR/etc/gimp" ~/.gimp-2.8
 fi
 

@@ -10,14 +10,15 @@ if [ -d ~/.homestead ]; then
     exit 0
 fi
 
-vagrant box add laravel/homestead
+sudo chown -R $SUDO_USER:$SUDO_USER ~/.vagrant.d
 
-USR=$(logname)
+vagrant box add laravel/homestead
 
 git clone -q https://github.com/laravel/homestead.git ~/Code/homestead
 cd ~/Code/homestead
 bash init.sh
-sudo chown -R $USR:$USR ~/Code/homestead
-sudo chown -R $USR:$USR ~/.homestead
+
+sudo chown -R $SUDO_USER:$SUDO_USER ~/Code/homestead
+sudo chown -R $SUDO_USER:$SUDO_USER ~/.homestead
 
 ok
