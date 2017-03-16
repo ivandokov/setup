@@ -13,3 +13,12 @@ function homestead() {
 function hs() {
 	homestead $*
 }
+
+_homestead()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "box connect destroy global-status halt help init login package plugin port powershell push rdp reload resume share snapshot ssh ssh-config status suspend up version" -- $cur) )
+}
+
+complete -F _homestead homestead
+
