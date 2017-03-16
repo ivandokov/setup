@@ -21,3 +21,5 @@
 	chs = !git diff $GIT_BRANCH@{1} $GIT_BRANCH
 	chss = !git diff --stat $GIT_BRANCH@{1} $GIT_BRANCH
 	today = log --oneline --since 'today 9:00' --author 'Ivan Dokov'
+[help]
+	autocorrect = 5
