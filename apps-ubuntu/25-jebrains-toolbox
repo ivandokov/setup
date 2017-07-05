@@ -10,9 +10,10 @@ if which pstorm > /dev/null; then
     exit 0
 fi
 
-wget https://download.jetbrains.com/webide/PhpStorm-2016.3.tar.gz
-tar -zxf PhpStorm-2016.*.tar.gz
-rm PhpStorm-2016.*.tar.gz
-mv PhpStorm-* /opt/phpstorm-2016
+wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.3.2421.tar.gz
+tar -zxf jetbrains*.tar.gz
+rm jetbrains*.tar.gz
+mv jetbrains* /opt/toolbox
+./opt/jetbrains-toolbox/jetbrains-toolbox
 
 ok
