@@ -7,7 +7,7 @@ Applications, bash aliases and other settings.
 ```
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get install git
+sudo apt-get install git -y
 sudo chown $(whoami) /opt
 git clone git@github.com:ivandokov/setup.git ~/.setup
 cd ~/.setup
