@@ -14,6 +14,6 @@ wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.3.2421.tar.gz
 tar -zxf jetbrains*.tar.gz
 rm jetbrains*.tar.gz
 mv jetbrains* /opt/toolbox
-./opt/jetbrains-toolbox/jetbrains-toolbox
+. /opt/toolbox/jetbrains-toolbox
 
 ok
