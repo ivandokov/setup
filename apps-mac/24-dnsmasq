@@ -11,9 +11,8 @@ if brew ls --versions dnsmasq > /dev/null; then
 fi
 
 brew install dnsmasq
-sudo brew services start dnsmasq
-cp /usr/local/opt/dnsmasq/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf
-echo 'conf-dir=/etc/dnsmasq.d/,*.conf' > /usr/local/etc/dnsmasq.conf
+mkdir -pv $(brew --prefix)/etc/
+echo 'conf-dir=/etc/dnsmasq.d/*.conf' > $(brew --prefix)/etc/dnsmasq.conf
 sudo mkdir /etc/dnsmasq.d
 echo 'address=/.app/192.168.10.10' | sudo tee /etc/dnsmasq.d/app.conf
 echo 'address=/.loc/192.168.10.10' | sudo tee /etc/dnsmasq.d/loc.conf
