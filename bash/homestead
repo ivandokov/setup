@@ -2,7 +2,7 @@ function homestead() {
     if [ "$1" == "init" ]; then
         git clone https://github.com/laravel/homestead.git ~/Code/homestead
     elif [ "$1" == "edit" ]; then
-        nano ~/.homestead/Homestead.yaml
+        nano ~/Code/homestead/Homestead.yaml
     elif [ "$1" == "rebuild" ]; then
         ( cd ~/Code/homestead && vagrant destroy -f && vagrant up && vagrant ssh; cd - > /dev/null )
     else
