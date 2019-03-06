@@ -1,6 +1,6 @@
 [user]
 	name = Ivan Dokov
-	email = ivangdokov@gmail.com
+	email = ivan@jetspark.io
 [core]
 	excludesfile = ~/.gitignore
 	ignorecase = false
