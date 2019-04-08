@@ -1,11 +1,11 @@
 if [ "$(uname)" == "Darwin" ]; then
-	alias copy='pbcopy'
-	alias paste='pbpaste'
+    alias copy='pbcopy'
+    alias paste='pbpaste'
 else
-	alias copy='xclip -selection clipboard'
-	alias paste='xclip -selection clipboard -o'
-	alias pbcopy='copy'
-	alias pbpaste='paste'
+    alias copy='xclip -selection clipboard'
+    alias paste='xclip -selection clipboard -o'
+    alias pbcopy='copy'
+    alias pbpaste='paste'
 fi
 
 # Copy paste verbose
