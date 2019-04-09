@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+if which go > /dev/null; then
+    info "Installing go" 1
+    brew install go
+    ok
+fi

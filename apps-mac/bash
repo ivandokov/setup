@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+if bash --version | grep -q 'version 3.'; then
+    info "Installing bash" 1
+    brew install bash
+    brew install bash-completion
+    ok
+fi

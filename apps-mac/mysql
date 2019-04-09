@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+if which mysql > /dev/null; then
+    info "Installing mysql" 1
+    brew install mysql@5.7
+    ok
+fi

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+if which dart > /dev/null; then
+    info "Installing dart" 1
+    brew install dart
+    ok
+fi
