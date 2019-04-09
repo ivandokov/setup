@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
+. "$DIR/print"
+
+info "Installing Node.JS"
+
+if which nodejs > /dev/null; then
+    warn "Already installed!"
+    exit 0
+fi
+
+sudo apt-get install curl python-software-properties
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo chown -R $SUDO_USER:$SUDO_USER ~/.npm-packages
+sudo apt-get install --no-install-recommends yarn
+
+ok

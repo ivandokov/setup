@@ -5,8 +5,8 @@ DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 
 info "Setting up dnsmasq"
 
-echo 'address=/.loc/192.168.10.10
-address=/.app/192.168.10.10' | sudo tee /etc/NetworkManager/dnsmasq.d/hosts.conf
+echo 'address=/.loc/127.0.0.1
+address=/.loc/127.0.0.1' | sudo tee /etc/NetworkManager/dnsmasq.d/loc.conf
 warn "Restart computer for hosts configurations to take effect!" 1
 
 ok
