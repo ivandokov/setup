@@ -10,6 +10,12 @@ if cat /etc/rc.local | grep -q 'hid_apple'; then
     exit 0
 fi
 
+if [ ! -f /etc/rc.local ]; then
+    echo "#!/bin/bash" | sudo tee /etc/rc.local > /dev/null
+    echo "exit 0" | sudo tee -a /etc/rc.local > /dev/null
+    sudo chmod +x /etc/rc.local
+fi
+
 sudo sed -i '/^exit 0/i \
 echo 2 > /sys/module/hid_apple/parameters/fnmode\
 echo 0 > /sys/module/hid_apple/parameters/iso_layout\
