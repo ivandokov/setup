@@ -3,8 +3,12 @@
 DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 . "$DIR/print"
 
+info "Installing Dart"
+
 if which dart > /dev/null; then
-    info "Installing dart" 1
-    brew install dart
-    ok
+    warn "Already installed!"
+    exit 0
 fi
+
+brew install dart
+ok

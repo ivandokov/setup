@@ -3,8 +3,12 @@
 DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 . "$DIR/print"
 
+info "Installing Go"
+
 if which go > /dev/null; then
-    info "Installing go" 1
-    brew install go
-    ok
+    warn "Already installed!"
+    exit 0
 fi
+
+brew install go
+ok

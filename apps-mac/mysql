@@ -3,8 +3,12 @@
 DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 . "$DIR/print"
 
+info "Installing MySQL"
+
 if which mysql > /dev/null; then
-    info "Installing mysql" 1
-    brew install mysql@5.7
-    ok
+    warn "Already installed!"
+    exit 0
 fi
+
+brew install mysql@5.7
+ok

@@ -3,9 +3,13 @@
 DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 . "$DIR/print"
 
+info "Installing Node.js"
+
 if which node > /dev/null; then
-    info "Installing node" 1
-    brew install node
-    brew install yarn
-    ok
+    warn "Already installed!"
+    exit 0
 fi
+
+brew install node
+brew install yarn
+ok
