@@ -3,5 +3,5 @@ if which go > /dev/null; then
         export GOPATH=$HOME/Code/go
     fi
     
-    export PATH=$PATH:$(go env GOPATH)/bin
+    export PATH=$(go env GOPATH)/bin:$PATH
 fi
