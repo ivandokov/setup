@@ -1,0 +1,7 @@
+if which go > /dev/null; then
+    if [ -d $HOME/Code/go ]; then
+        export GOPATH=$HOME/Code/go
+    fi
+    
+    export PATH=$PATH:$(go env GOPATH)/bin
+fi

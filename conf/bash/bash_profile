@@ -2,7 +2,7 @@
 
 DIR="$(dirname $(dirname $(dirname "$(readlink "${BASH_SOURCE[0]}")")))"
 
-export PATH="${DIR}/bin:/usr/lib/dart/bin:/usr/local/sbin:$PATH"
+export PATH="${DIR}/bin:/usr/local/sbin:$PATH"
 
 # Source all bash files
 for i in ${DIR}/bash/*; do

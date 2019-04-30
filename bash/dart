@@ -1,0 +1,3 @@
+if which dart > /dev/null; then
+    export PATH="/usr/lib/dart/bin:$PATH"
+fi
