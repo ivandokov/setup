@@ -2,6 +2,7 @@ alias gut='git'
 alias got='git'
 alias gt='git'
 alias nah='git reset --hard && git clean -df'
+alias gitignored-cleanup='git rm --cached `git ls-files -i --exclude-from=.gitignore`'
 
 clone() {
     local url=$1;
