@@ -1,3 +1,7 @@
+**This repository is deprecated in favour of [ivandokov/dotfiles](https://github.com/ivandokov/dotfiles)**
+
+---
+
 # Setup
 
 Applications, bash aliases and other settings.
